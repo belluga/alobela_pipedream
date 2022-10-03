@@ -539,6 +539,7 @@ function _getCodEstab(zipdata) {
 function _buildItensGuru(guruBody) {
     const product_id = guruBody.product.id
     const _value_products = guruBody.product.total_value
+    const zipcode = guruBody.contact.address_zip_code
     const _produtos = []
 
     //TODO: Kit de Produto
@@ -548,13 +549,13 @@ function _buildItensGuru(guruBody) {
     //variável com o valor '_value_products'
 
     switch (product_id) {
-        case "1664564741":
+        case 1664564741:
 
             // const _kit_1_valor_total_sem_brinde = _value_products - 1
             // const _kit_1_item_1_valor_unitario_kit_revolution = _valor_total_sem_brinde/2
             let _kit_1_item_1_codProduto
 
-            if (isSaoPauloState(zipCodeInt)) {
+            if (isSaoPauloState(zipcode)) {
                 _kit_1_item_1_codProduto = "00002725"
             } else {
                 _kit_1_item_1_codProduto = "00002727"
@@ -574,14 +575,14 @@ function _buildItensGuru(guruBody) {
             _produtos.push(_kit_1_item_1)
             break
 
-        case "1664565135":
+        case 1664565135:
 
             const _kit_2_valor_total_sem_brinde = _value_products - 1
             const _kit_2_item_1_valor_unitario_kit_revolution = _kit_2_valor_total_sem_brinde / 2
             let _kit_2_item_1_codProduto
             let _kit_2_item_2_codProduto
 
-            if (isSaoPauloState(zipCodeInt)) {
+            if (isSaoPauloState(zipcode)) {
                 _kit_2_item_1_codProduto = "00002725"
                 _kit_2_item_2_codProduto = "00002693"
             } else {
@@ -615,14 +616,14 @@ function _buildItensGuru(guruBody) {
             _produtos.push(_kit_2_item_2)
             break
 
-        case "1664565228":
+        case 1664565228:
 
             const _kit_3_valor_total_sem_brinde = _value_products - 1
             // const _kit_3_item_1_valor_unitario_kit_revolution = _kit_3_valor_total_sem_brinde/2
             let _kit_3_item_1_codProduto
             let _kit_3_item_2_codProduto
 
-            if (isSaoPauloState(zipCodeInt)) {
+            if (isSaoPauloState(zipcode)) {
                 _kit_3_item_1_codProduto = "00002696"
                 _kit_3_item_2_codProduto = "00002710"
             } else {
@@ -656,14 +657,14 @@ function _buildItensGuru(guruBody) {
             _produtos.push(_kit_3_item_2)
             break
 
-        case "1664807922":
+        case 1664807922:
 
             const _kit_4_valor_total_sem_brinde = _value_products - 1
             // const _kit_3_item_1_valor_unitario_kit_revolution = _kit_3_valor_total_sem_brinde/2
             let _kit_4_item_1_codProduto
             let _kit_4_item_2_codProduto
 
-            if (isSaoPauloState(zipCodeInt)) {
+            if (isSaoPauloState(zipcode)) {
                 _kit_4_item_1_codProduto = "00002700"
                 _kit_4_item_2_codProduto = "00002710"
             } else {
@@ -961,8 +962,8 @@ function convertGuruToVanRooy(guruBody) {
     const produtos = _buildItensGuru(guruBody)
     const payment = _buildFormaPagtoGuru(guruBody)
     const delivery = _buildEntregaGuru(guruBody)
-    const midia = "846"
-    // const _codVendedor = _getVendedorFromUTM(guruBody)
+    const midia = "385"
+    const _codVendedor = "0846"
 
     const total_str = guruBody.payment.total
     const total_number = parseFloat(total_str)
@@ -984,7 +985,7 @@ function convertGuruToVanRooy(guruBody) {
             CdModalEntr: delivery.type,
             Midia: midia,
             Campanha: "000000000038",
-            // CdVend: _codVendedor,
+            CdVend: _codVendedor,
             Cliente: {
                 CodCliente: guruBody.contact.id,
                 Nome: guruBody.contact.name.trim(),
