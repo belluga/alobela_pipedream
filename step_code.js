@@ -145,6 +145,8 @@ function _buildEntregaGuru(guruBody) {
 
     switch (product_id) {
         case "PRODUTOS QUE CONTEM AMOSTRA":
+        case "646464":
+        case "546464":
             //switch to get the CEP range and return the correct type
             const _malaDiretaType = maladiretaType(zipcode)
             _malaDiretaType["price"] = guruBody.shipment.value - 1
@@ -539,14 +541,56 @@ function _buildItensGuru(guruBody) {
     const _value_products = guruBody.product.total_value
     const _produtos = []
 
+    //TODO
     //É necessário fazer cálculos a cada kit para verificar o valor final de cada
     //item e valor do desconto. Não dá pra colocar valor estático porque tem os
     //cupons de desconto. Por isso precisa calcular usando o valor final de venda.
     //variável com o valor '_value_products'
+    let _item_1
     switch (product_id) {
+        case "sdefdsfsdfsd":
+            break    
+
         case "ID DO KIT":
+
+            //384,90
+            //383,90
+            //383,90/2
+            //2 Kit Revolution 30 (valor -1)
+            //1 água micelar (R$1)
+
+            //Protetor solar tem que entrar com valor R$1
+
+            const _valor_total_sem_brinde = _value_products - 1
+            const _valor_unitario_kit_revolution = _valor_total_sem_brinde/2
+
+            const _kit_rev = {
+                "Seq": "ORDEM NA LISTA",
+                "Qtd": "2",
+                "CodProduto": "CÓDIGO VANROOY", //cuidado porque NÃO É NUMÉRICO
+                "TipoDesconto": "V", //V ou P. Melhor deixar
+                "ValorUnitario": _valor_unitario_kit_revolution,
+                "Desconto": 0,
+                "ValorDesconto": 0,
+                "ValorTotal": _valor_total_sem_brinde
+            }
+
+            const _protetor = {
+                "Seq": "ORDEM NA LISTA",
+                "Qtd": "1",
+                "CodProduto": "CÓDIGO VANROOY", //cuidado porque NÃO É NUMÉRICO
+                "TipoDesconto": "V", //V ou P. Melhor deixar
+                "ValorUnitario": "Valor do produto",
+                "Desconto": "Valor do desconto",
+                "ValorDesconto": "Valor do desconto",
+                "ValorTotal": "Valor total desse produto"
+            }
+
+            _produtos.push(_kit_rev)
+            _produtos.push(_protetor)
+            break
         default:
-            const _item_1 = {
+            _item_1 = {
                 "Seq": "ORDEM NA LISTA",
                 "Qtd": "QUANTIDADE",
                 "CodProduto": "CÓDIGO VANROOY",
