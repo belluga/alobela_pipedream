@@ -546,49 +546,158 @@ function _buildItensGuru(guruBody) {
     //item e valor do desconto. Não dá pra colocar valor estático porque tem os
     //cupons de desconto. Por isso precisa calcular usando o valor final de venda.
     //variável com o valor '_value_products'
-    let _item_1
+
     switch (product_id) {
-        case "sdefdsfsdfsd":
-            break    
+        case "1664564741":
 
-        case "ID DO KIT":
+            // const _kit_1_valor_total_sem_brinde = _value_products - 1
+            // const _kit_1_item_1_valor_unitario_kit_revolution = _valor_total_sem_brinde/2
+            let _kit_1_item_1_codProduto
 
-            //384,90
-            //383,90
-            //383,90/2
-            //2 Kit Revolution 30 (valor -1)
-            //1 água micelar (R$1)
+            if (isSaoPauloState(zipCodeInt)) {
+                _kit_1_item_1_codProduto = "00002725"
+            } else {
+                _kit_1_item_1_codProduto = "00002727"
+            }
 
-            //Protetor solar tem que entrar com valor R$1
-
-            const _valor_total_sem_brinde = _value_products - 1
-            const _valor_unitario_kit_revolution = _valor_total_sem_brinde/2
-
-            const _kit_rev = {
-                "Seq": "ORDEM NA LISTA",
-                "Qtd": "2",
-                "CodProduto": "CÓDIGO VANROOY", //cuidado porque NÃO É NUMÉRICO
+            const _kit_1_item_1 = {
+                "Seq": "1",
+                "Qtd": "1",
+                "CodProduto": _kit_1_item_1_codProduto, //cuidado porque NÃO É NUMÉRICO
                 "TipoDesconto": "V", //V ou P. Melhor deixar
-                "ValorUnitario": _valor_unitario_kit_revolution,
+                "ValorUnitario": _value_products,
                 "Desconto": 0,
                 "ValorDesconto": 0,
-                "ValorTotal": _valor_total_sem_brinde
+                "ValorTotal": _value_products
             }
 
-            const _protetor = {
-                "Seq": "ORDEM NA LISTA",
-                "Qtd": "1",
-                "CodProduto": "CÓDIGO VANROOY", //cuidado porque NÃO É NUMÉRICO
-                "TipoDesconto": "V", //V ou P. Melhor deixar
-                "ValorUnitario": "Valor do produto",
-                "Desconto": "Valor do desconto",
-                "ValorDesconto": "Valor do desconto",
-                "ValorTotal": "Valor total desse produto"
-            }
-
-            _produtos.push(_kit_rev)
-            _produtos.push(_protetor)
+            _produtos.push(_kit_1_item_1)
             break
+
+        case "1664565135":
+
+            const _kit_2_valor_total_sem_brinde = _value_products - 1
+            const _kit_2_item_1_valor_unitario_kit_revolution = _kit_2_valor_total_sem_brinde / 2
+            let _kit_2_item_1_codProduto
+            let _kit_2_item_2_codProduto
+
+            if (isSaoPauloState(zipCodeInt)) {
+                _kit_2_item_1_codProduto = "00002725"
+                _kit_2_item_2_codProduto = "00002693"
+            } else {
+                _kit_2_item_1_codProduto = "00002727"
+                _kit_2_item_2_codProduto = "00002695"
+            }
+
+            const _kit_2_item_1 = {
+                "Seq": "1",
+                "Qtd": "2",
+                "CodProduto": _kit_2_item_1_codProduto, //cuidado porque NÃO É NUMÉRICO
+                "TipoDesconto": "V", //V ou P. Melhor deixar
+                "ValorUnitario": _kit_2_item_1_valor_unitario_kit_revolution,
+                "Desconto": 0,
+                "ValorDesconto": 0,
+                "ValorTotal": _kit_2_valor_total_sem_brinde
+            }
+
+            const _kit_2_item_2 = {
+                "Seq": "2",
+                "Qtd": "1",
+                "CodProduto": _kit_2_item_2_codProduto, //cuidado porque NÃO É NUMÉRICO
+                "TipoDesconto": "V", //V ou P. Melhor deixar
+                "ValorUnitario": 1,
+                "Desconto": 0,
+                "ValorDesconto": 0,
+                "ValorTotal": 1
+            }
+
+            _produtos.push(_kit_2_item_1)
+            _produtos.push(_kit_2_item_2)
+            break
+
+        case "1664565228":
+
+            const _kit_3_valor_total_sem_brinde = _value_products - 1
+            // const _kit_3_item_1_valor_unitario_kit_revolution = _kit_3_valor_total_sem_brinde/2
+            let _kit_3_item_1_codProduto
+            let _kit_3_item_2_codProduto
+
+            if (isSaoPauloState(zipCodeInt)) {
+                _kit_3_item_1_codProduto = "00002696"
+                _kit_3_item_2_codProduto = "00002710"
+            } else {
+                _kit_3_item_1_codProduto = "00002698"
+                _kit_3_item_2_codProduto = "00002712"
+            }
+
+            const _kit_3_item_1 = {
+                "Seq": "1",
+                "Qtd": "1",
+                "CodProduto": _kit_3_item_1_codProduto, //cuidado porque NÃO É NUMÉRICO
+                "TipoDesconto": "V", //V ou P. Melhor deixar
+                "ValorUnitario": _kit_3_valor_total_sem_brinde,
+                "Desconto": 0,
+                "ValorDesconto": 0,
+                "ValorTotal": _kit_3_valor_total_sem_brinde
+            }
+
+            const _kit_3_item_2 = {
+                "Seq": "2",
+                "Qtd": "1",
+                "CodProduto": _kit_3_item_2_codProduto, //cuidado porque NÃO É NUMÉRICO
+                "TipoDesconto": "V", //V ou P. Melhor deixar
+                "ValorUnitario": 1,
+                "Desconto": 0,
+                "ValorDesconto": 0,
+                "ValorTotal": 1
+            }
+
+            _produtos.push(_kit_3_item_1)
+            _produtos.push(_kit_3_item_2)
+            break
+
+        case "1664807922":
+
+            const _kit_4_valor_total_sem_brinde = _value_products - 1
+            // const _kit_3_item_1_valor_unitario_kit_revolution = _kit_3_valor_total_sem_brinde/2
+            let _kit_4_item_1_codProduto
+            let _kit_4_item_2_codProduto
+
+            if (isSaoPauloState(zipCodeInt)) {
+                _kit_4_item_1_codProduto = "00002700"
+                _kit_4_item_2_codProduto = "00002710"
+            } else {
+                _kit_4_item_1_codProduto = "00002702"
+                _kit_4_item_2_codProduto = "00002712"
+            }
+
+            const _kit_4_item_1 = {
+                "Seq": "1",
+                "Qtd": "1",
+                "CodProduto": _kit_4_item_1_codProduto, //cuidado porque NÃO É NUMÉRICO
+                "TipoDesconto": "V", //V ou P. Melhor deixar
+                "ValorUnitario": _kit_4_valor_total_sem_brinde,
+                "Desconto": 0,
+                "ValorDesconto": 0,
+                "ValorTotal": _kit_4_valor_total_sem_brinde
+            }
+
+            const _kit_4_item_2 = {
+                "Seq": "2",
+                "Qtd": "1",
+                "CodProduto": _kit_4_item_2_codProduto, //cuidado porque NÃO É NUMÉRICO
+                "TipoDesconto": "V", //V ou P. Melhor deixar
+                "ValorUnitario": 1,
+                "Desconto": 0,
+                "ValorDesconto": 0,
+                "ValorTotal": 1
+            }
+
+            _produtos.push(_kit_4_item_1)
+            _produtos.push(_kit_4_item_2)
+            break
+
+
         default:
             _item_1 = {
                 "Seq": "ORDEM NA LISTA",
