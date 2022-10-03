@@ -19,7 +19,7 @@ export default {
         async deploy() { },
     },
     dedupe: "",
-    async run(event) {
-        var vanrooyAPI = new VanRooyAPI(this, event)
+    async run($, event) {
+        var vanrooyAPI = new VanRooyAPI($, event)
     },
 };
