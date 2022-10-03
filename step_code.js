@@ -138,7 +138,7 @@ function _buildEntregaGuru(guruBody) {
     const total_value = guruBody.payment.total
     const zipCodeInt = parseInt(zipcode)
 
-    //TODO
+    //TODO: Amostra e Forma de envio
     //É preciso agrupar no switch os produtos que são de promoção de amostras.
     //Já na segunda parte é necessário ver os códigos de serviço dos correios
     //para atribuir corretamente o código do VanRooy.
@@ -541,7 +541,7 @@ function _buildItensGuru(guruBody) {
     const _value_products = guruBody.product.total_value
     const _produtos = []
 
-    //TODO
+    //TODO: Kit de Produto
     //É necessário fazer cálculos a cada kit para verificar o valor final de cada
     //item e valor do desconto. Não dá pra colocar valor estático porque tem os
     //cupons de desconto. Por isso precisa calcular usando o valor final de venda.
