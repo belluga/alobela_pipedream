@@ -138,6 +138,11 @@ function _buildEntregaGuru(guruBody) {
     const total_value = guruBody.payment.total
     const zipCodeInt = parseInt(zipcode)
 
+    //TODO
+    //É preciso agrupar no switch os produtos que são de promoção de amostras.
+    //Já na segunda parte é necessário ver os códigos de serviço dos correios
+    //para atribuir corretamente o código do VanRooy.
+
     switch (product_id) {
         case "PRODUTOS QUE CONTEM AMOSTRA":
             //switch to get the CEP range and return the correct type
@@ -534,13 +539,13 @@ function _buildItensGuru(guruBody) {
     const _value_products = guruBody.product.total_value
     const _produtos = []
 
+    //É necessário fazer cálculos a cada kit para verificar o valor final de cada
+    //item e valor do desconto. Não dá pra colocar valor estático porque tem os
+    //cupons de desconto. Por isso precisa calcular usando o valor final de venda.
+    //variável com o valor '_value_products'
     switch (product_id) {
         case "ID DO KIT":
         default:
-            //É necessário fazer cálculos a cada kit para verificar o valor final de cada
-            //item e valor do desconto. Não dá pra colocar valor estático porque tem os
-            //cupons de desconto. Por isso precisa calcular usando o valor final de venda.
-            //variável com o valor '_value_products'
             const _item_1 = {
                 "Seq": "ORDEM NA LISTA",
                 "Qtd": "QUANTIDADE",
