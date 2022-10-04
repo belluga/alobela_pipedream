@@ -964,7 +964,7 @@ function _trafficProccessParameters(yampiBody) {
 
 function convertGuruToVanRooy(guruBody) {
 
-    const data = new Date(guruBody.dates.confirmed_at)
+    const data = new Date(guruBody.dates.ordered_at)
     const zipcode = new Date(guruBody.contact.address_zip_code)
     const produtos = _buildItensGuru(guruBody)
     const payment = _buildFormaPagtoGuru(guruBody)
@@ -987,7 +987,7 @@ function convertGuruToVanRooy(guruBody) {
     const _vanrooy_body = {
         Erro: null,
         Pedido: {
-            NumeroPedido: guruBody.id,
+            NumeroPedido: "g_"+guruBody.payment.marketplace_id,
             CodEstab: _getCodEstab(zipcode),
             DataPedido: data.toISOString(),
             TotalPedido: total_number,
@@ -1014,7 +1014,7 @@ function convertGuruToVanRooy(guruBody) {
                 DDD1: _phoneDDD,
                 Tel1: _phoneNumber,
                 FisJur: "F",
-                CPF: guruBody.contact.address_number.trim(),
+                CPF: guruBody.contact.doc.trim(),
 
             },
             Produtos: produtos,
