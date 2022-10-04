@@ -965,6 +965,8 @@ function _trafficProccessParameters(yampiBody) {
 function convertGuruToVanRooy(guruBody) {
 
     const data = new Date(guruBody.dates.ordered_at)
+    data.setHours(data.getHours()-3);
+    
     const zipcode = new Date(guruBody.contact.address_zip_code)
     const produtos = _buildItensGuru(guruBody)
     const payment = _buildFormaPagtoGuru(guruBody)
