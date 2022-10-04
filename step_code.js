@@ -69,6 +69,8 @@ async function orderIntegratedUpdate() {
         _query = { "platform_id": parseInt(_request_parameter) }
     }
 
+    console.log(_query)
+
     await mongoUpdateOne(_query, _updateData)
 
     return {
