@@ -62,7 +62,12 @@ async function orderIntegratedUpdate() {
             "data.vanrooy": this.vanRooyResult.Pedido
         }
     }
-    const _query = { "platform_id": parseInt(_request_parameter) }
+
+    if (_request_parameter.length > 10) {
+        _query = { "platform_id": _request_parameter }
+    } else {
+        _query = { "platform_id": parseInt(_request_parameter) }
+    }
 
     await mongoUpdateOne(_query, _updateData)
 
