@@ -537,7 +537,7 @@ function _getCodEstab(zipdata) {
 }
 
 function _buildItensGuru(guruBody) {
-    const product_id = guruBody.product.id
+    const product_id = parseInt(guruBody.product.id)
     const _value_products = guruBody.product.total_value
     const zipcode = guruBody.contact.address_zip_code
     const _produtos = []
@@ -973,6 +973,10 @@ function convertGuruToVanRooy(guruBody) {
         _obs = delivery.obs
     }
 
+    guruBody.contact.phone_number
+    const _phoneDDD = guruBody.contact.phone_number.slice(0, 2);
+    const _phoneNumber = guruBody.contact.phone_number.slice(2, 100);
+
     const _vanrooy_body = {
         Erro: null,
         Pedido: {
@@ -1000,8 +1004,8 @@ function convertGuruToVanRooy(guruBody) {
                 ObsEndereco: _obs,
                 // DDI1:"",
                 Email1: guruBody.contact.email,
-                DDD1: guruBody.contact.phone_local_code,
-                Tel1: guruBody.contact.phone_number,
+                DDD1: _phoneDDD,
+                Tel1: _phoneNumber,
                 FisJur: "F",
                 CPF: guruBody.contact.address_number.trim(),
 
@@ -1100,7 +1104,7 @@ async function getNotIntegratedList() {
     // Enter your target collection as a parameter to this step
     // this.res = await db.collection(params.collection).findOne({ "data.resource.id": params.order_id }, {}) 
     this.match = {
-        "origin_platform": "yampi",
+        $or: [{ "origin_platform": "yampi" }, { "origin_platform": "guru" }],
         "integrations.vanrooy.status": false
     }
 
